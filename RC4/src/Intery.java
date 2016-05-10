@@ -1,9 +1,5 @@
 
 public interface Intery {
-	public static byte[] encrypt(char[] goingEncrypt, String key)throws Exception{
-		return null;
-	}
-	public static String decrypt(byte[] goingDecrypt, String key)throws Exception{
-		return "";
-	}
+	public byte PRGA();
+	public void KSA();
 }

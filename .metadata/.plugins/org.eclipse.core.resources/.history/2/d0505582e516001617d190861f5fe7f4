@@ -28,16 +28,12 @@ public class Transmit implements Intery{
 	public byte PRGA(){
 		int j=0;
 		int i=0;
-		for(int m=0;m<inputted.length;m++){
+		while(){
 			i=(i+1)%256;
 			j=(j+S[i])%256;
-			char temp=S[i];
-			S[i]=S[j];
-			S[j]=temp;
 			byte output= (byte) S[(S[i]+S[j])%256];
 			return output;
 		}
-		return (Byte) null;
 	}
 	
 }
