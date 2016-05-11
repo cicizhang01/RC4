@@ -7,17 +7,17 @@ import org.apache.commons.codec.binary.Hex;
 
 public class Transmit implements Intery{
 	private int[] S;
-	private char[] inputted;
+	
 	private byte[] key;
-	public Transmit(char[] input, byte[] keyinput){
+	public Transmit(byte[] keyinput){
 		int[] S=new int[256];
 		for (int i=0; i<256;i++){
 			S[i]=i;
 			
 		}
-		char[] inputted =new char[input.length];
+		
 		byte[] key=new byte[keyinput.length];
-		inputted=input;
+		
 		key=keyinput;
 		
 		KSA();
@@ -70,9 +70,17 @@ public class Transmit implements Intery{
 	}
 	public String encrypt(String message){
 		byte[] plaintext = new byte[0];
-		plaintext = message.getBytes("ASCII");
+		if (key.length < 1 || key.length > 256) {
+			throw new IllegalArgumentException("key must be between 1 and 256 bytes");
+		} else {
+			
+			for (int i = 0; i < 256; i++) {
+				S[i] = i;
+			}
+
 		byte[] ciphertext = toBytes(PRGA(toInts(plaintext)));
 		return Hex.encodeHexString(ciphertext);
+		}
 	}
 	@Override
 	public String decrypt(String cipherText) {
