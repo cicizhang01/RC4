@@ -1,5 +1,6 @@
 
 public interface Intery {
-	public byte PRGA();
-	public void KSA();
+	public String encrypt(String message);
+	public String decrypt(String cipherText);
+	
 }

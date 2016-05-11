@@ -74,10 +74,5 @@ public class Transmit implements Intery{
 		byte[] ciphertext = toBytes(PRGA(toInts(plaintext)));
 		return Hex.encodeHexString(ciphertext);
 	}
-	@Override
-	public String decrypt(String cipherText) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 }
