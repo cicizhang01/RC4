@@ -9,7 +9,7 @@ public class Tester {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		byte[] keyInput = hexStringToByteArray("pass");
+		byte[] keyInput = hexStringToByteArray("password789");
 		Transmit crying=new Transmit(keyInput);
 		System.out.println(crying.getKey());
 		System.out.println(crying.encrypt("Hello World"));
