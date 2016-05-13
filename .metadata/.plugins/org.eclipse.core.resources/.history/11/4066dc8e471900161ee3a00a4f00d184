@@ -9,8 +9,9 @@ public class Tester {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		byte[] keyInput = {0x12, 0x34,0x23, 0x35,0x65,0x23,0x45,0x78};
+		byte[] keyInput = {0x12, 0x34,0x23, 0x35};
 		Transmit crying=new Transmit(keyInput);
+		System.out.println(crying.getKey());
 		System.out.println(crying.encrypt("Hello World"));
 	}
 
