@@ -9,18 +9,21 @@ public class Transmit implements Intery{
 	private int[] S;
 	
 	private byte[] key;
-	public Transmit(byte[] keyinput){
+	public Transmit( byte[] keyinput){
 		int[] S=new int[256];
+		
 		for (int i=0; i<256;i++){
 			S[i]=i;
-			
 		}
 		
 		byte[] key=new byte[keyinput.length];
+		for(int i=0;i<keyinput.length;i++){
+			key[i]=keyinput[i];
+		}
 		
-		key=keyinput;
-		
-		KSA();
+	}
+	public byte[] getKey(){
+		return key;
 	}
 	public void KSA(){
 		int j=0;
@@ -61,7 +64,7 @@ public class Transmit implements Intery{
 		return output;
 	}
 
-	private byte[] toBytes(int[] ints) {
+	public byte[] toBytes(int[] ints) {
 		byte[] output = new byte[ints.length];
 		for (int i = 0; i < ints.length; i++) {
 			output[i] = (byte) ints[i];
@@ -69,6 +72,7 @@ public class Transmit implements Intery{
 		return output;
 	}
 	public String encrypt(String message){
+		KSA();
 		byte[] plaintext = new byte[0];
 		if (key.length < 1 || key.length > 256) {
 			throw new IllegalArgumentException("key must be between 1 and 256 bytes");

@@ -1,0 +1,28 @@
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+
+import org.apache.commons.codec.DecoderException;
+
+import org.apache.commons.codec.binary.Hex;
+
+public class Tester {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] temp={0,3,3,6,4,6,9};
+		byte[] keyInput=new byte[6];
+		keyInput=toBytes(temp);
+		Transmit crying=new Transmit(keyInput);
+	}
+
+	private static byte[] toBytes(int[] ints) {
+		// TODO Auto-generated method stub
+		byte[] output = new byte[ints.length];
+		for (int i = 0; i < ints.length; i++) {
+			output[i] = (byte) ints[i];
+		}
+		return output;
+		return null;
+	}
+
+}
