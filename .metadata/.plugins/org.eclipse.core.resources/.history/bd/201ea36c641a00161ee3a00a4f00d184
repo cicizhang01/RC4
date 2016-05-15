@@ -10,7 +10,7 @@ public class Transmit implements Intery{
 	
 	private byte[] key;
 	public Transmit( byte[] keyinput){
-		S=new int[256];
+		int[] S=new int[256];
 		
 		for (int i=0; i<256;i++){
 			S[i]=i;
@@ -26,20 +26,17 @@ public class Transmit implements Intery{
 	public byte[] getKey(){
 		return key;
 	}
-	public int[] getS(){
-		return S;
-	}
 	public void KSA(){
 		int j=0;
-		int temp=0;
 		for(int i=0; i<256;i++){
-			
+			System.out.println(i);
+			System.out.println(S[i]);
+			System.out.println(key[i%key.length]);
 			j=(j+S[i]+key[i%key.length])%256;
 		
-			temp=S[i];
+			int temp=S[i];
 			S[i]=S[j];
 			S[j]=temp;
-			temp=0;
 		}
 	
 	}
