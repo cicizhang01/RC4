@@ -21,8 +21,7 @@ public class Transmit implements Intery{
 		for(int i=0;i<keyinput.length;i++){
 			key[i]=keyinput[i];
 		}
-		KSA();
-		//System.out.println("Finished constructor");
+		System.out.println("Finished constructor");
 	}
 	public byte[] getKey(){
 		return key;
@@ -32,24 +31,24 @@ public class Transmit implements Intery{
 	}
 	public void KSA(){
 		int j=0;
-		
+		int temp=0;
 		for(int i=0; i<256;i++){
 			
 			j=(j+S[i]+key[i%key.length])%256;
 		
-			int temp=S[i];
+			temp=S[i];
 			S[i]=S[j];
 			S[j]=temp;
 			temp=0;
 		}
-		//System.out.println("Finished KSA");
+		System.out.println("Finished KSA");
 	}
 	public int[] PRGA(int[] input){
 		final int[] output = new int[input.length];
 
 		final int[] S = new int[this.S.length];
 		System.arraycopy(this.S, 0, S, 0, S.length);
-		
+
 		int i = 0, j = 0, k, t;
 		for (int counter = 0; counter < input.length; counter++) {
 			i = (i + 1) & 0xFF;
@@ -61,7 +60,7 @@ public class Transmit implements Intery{
 			k = S[t];
 			output[counter] = input[counter] ^ k;
 		}
-		//System.out.println("Finished PRGA");
+		System.out.println("Finished PRGA");
 		return output;
 	}
 	private int[] toInts(byte[] bytes) {
@@ -69,7 +68,7 @@ public class Transmit implements Intery{
 		for (int i = 0; i < bytes.length; i++) {
 			output[i] = bytes[i];
 		}
-		//System.out.println("Finished toInts");
+		System.out.println("Finished toInts");
 		return output;
 		
 	}
@@ -79,22 +78,25 @@ public class Transmit implements Intery{
 		for (int i = 0; i < ints.length; i++) {
 			output[i] = (byte) ints[i];
 		}
-		//System.out.println("Finished toBytes");
+		System.out.println("Finished toBytes");
 		return output;
 	}
 	public String encrypt(String message){
-		
+		KSA();
 		byte[] plaintext = new byte[0];
-		try {
-			plaintext = message.getBytes("ASCII");
-		} catch (UnsupportedEncodingException e) {
-		}
+		if (key.length < 1 || key.length > 256) {
+			throw new IllegalArgumentException("key must be between 1 and 256 bytes");
+		} else {
+			
+			for (int i = 0; i < 256; i++) {
+				S[i] = i;
+			}
 
 		byte[] ciphertext = toBytes(PRGA(toInts(plaintext)));
-		//System.out.println("Finished encrypt");
+		System.out.println("Finished encrypt");
 		return Hex.encodeHexString(ciphertext);
 		}
-	
+	}
 	@Override
 	public String decrypt(String cipherText) {
 		// TODO Auto-generated method stub

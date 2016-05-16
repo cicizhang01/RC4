@@ -22,7 +22,7 @@ public class Transmit implements Intery{
 			key[i]=keyinput[i];
 		}
 		KSA();
-		//System.out.println("Finished constructor");
+		System.out.println("Finished constructor");
 	}
 	public byte[] getKey(){
 		return key;
@@ -42,7 +42,7 @@ public class Transmit implements Intery{
 			S[j]=temp;
 			temp=0;
 		}
-		//System.out.println("Finished KSA");
+		System.out.println("Finished KSA");
 	}
 	public int[] PRGA(int[] input){
 		final int[] output = new int[input.length];
@@ -61,7 +61,7 @@ public class Transmit implements Intery{
 			k = S[t];
 			output[counter] = input[counter] ^ k;
 		}
-		//System.out.println("Finished PRGA");
+		System.out.println("Finished PRGA");
 		return output;
 	}
 	private int[] toInts(byte[] bytes) {
@@ -69,7 +69,7 @@ public class Transmit implements Intery{
 		for (int i = 0; i < bytes.length; i++) {
 			output[i] = bytes[i];
 		}
-		//System.out.println("Finished toInts");
+		System.out.println("Finished toInts");
 		return output;
 		
 	}
@@ -79,7 +79,7 @@ public class Transmit implements Intery{
 		for (int i = 0; i < ints.length; i++) {
 			output[i] = (byte) ints[i];
 		}
-		//System.out.println("Finished toBytes");
+		System.out.println("Finished toBytes");
 		return output;
 	}
 	public String encrypt(String message){
@@ -91,7 +91,7 @@ public class Transmit implements Intery{
 		}
 
 		byte[] ciphertext = toBytes(PRGA(toInts(plaintext)));
-		//System.out.println("Finished encrypt");
+		System.out.println("Finished encrypt");
 		return Hex.encodeHexString(ciphertext);
 		}
 	
