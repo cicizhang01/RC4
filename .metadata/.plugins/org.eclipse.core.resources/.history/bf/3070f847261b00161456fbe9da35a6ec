@@ -46,6 +46,9 @@ public class Transmit implements Intery{
 	}
 	public int[] PRGA(int[] input){
 		final int[] output = new int[input.length];
+
+		//final int[] S = new int[this.S.length];
+		//System.arraycopy(this.S, 0, S, 0, S.length);
 		
 		int i = 0, j = 0, k, t;
 		for (int counter = 0; counter < input.length; counter++) {

@@ -11,9 +11,9 @@ public class Tester {
 		// TODO Auto-generated method stub
 		byte[] keyInput = {0x12, 0x34,0x23, 0x35,0x65,0x23,0x45,0x78};
 		Transmit crying=new Transmit(keyInput);
-		System.out.println(crying.encrypt("Hello World"));
+		System.out.println(crying.encrypt("NOOOOO HELPPPPPPP GAHHHHH"));
 		Receive notCryingAsMuch=new Receive(keyInput);
-		System.out.println(notCryingAsMuch.decrypt("32ca3f350cf7c8b0d44518"));
+		System.out.println(notCryingAsMuch.decrypt("34e01c162c98bf97e3652cb8e8246fbe35d2231fbd12998241"));
 		
 	}
 
